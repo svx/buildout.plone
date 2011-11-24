@@ -55,6 +55,9 @@ Credits
 -------
 
 Plone - http://plone.org
+
 Lennart Regebro - https://github.com/regebro
+
 thet -> https://github.com/thet
+
 natea -> https://github.com/natea
