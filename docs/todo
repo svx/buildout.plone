@@ -3,3 +3,4 @@
 - add buildout.d folder
 - move *.cfg into buildout.d folder
 - add license
+- cleanup
