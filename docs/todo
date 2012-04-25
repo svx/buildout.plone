@@ -1,2 +1,3 @@
 - make new testing.cfg
 - change staging and testing cfg and point them to the right templates
+- add buildout.d folder
