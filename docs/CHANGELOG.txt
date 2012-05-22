@@ -4,3 +4,5 @@ Changelog
 22-05-2012 - svx
 	* move all *.cfg to buildout.d
 	* now with license [gpl]
+	* add new templates for testing
+	* add new testing.cfg

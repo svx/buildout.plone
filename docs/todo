@@ -1,6 +1,1 @@
-- make new testing.cfg
-- change staging and testing cfg and point them to the right templates
-- add buildout.d folder
-- move *.cfg into buildout.d folder
-- add license
 - cleanup
