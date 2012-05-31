@@ -7,7 +7,7 @@ This is a basic example buildout for Plone 4
 Installation
 ------------
 
-Tested on Debian 6 [Squeeze] and Ubuntu 11.10 [Oneiric Ocelot]
+Tested on Debian 6 [Squeeze], Debian 7 and Ubuntu 11.10 [Oneiric Ocelot]
 
 Make sure you have all dependencies you need/want, i prefer to install it into its own virtual environm
 ent::
