@@ -4,7 +4,7 @@ python:
     - 2.6
 
 install:
-    - python boostrap.py -c config/base.cfg
+    - python bootsrap.py -c config/base.cfg
     - bin/buildout -c config/base.cfg -q
 
 notifications:
