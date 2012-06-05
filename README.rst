@@ -29,14 +29,14 @@ Plone is installed using the buildout system. Installation is as straight forwar
 
         git clone git://github.com/svx/Plone-Buildout-Example.git buildout
         cd buildout
-        
+
 Now you have to create your buildout.cfg file, depending on what you want to run yo have to do::
 
         vim [<- choose the editor of your choise] buildout.cfg
-        
+
         [buildout]
-        extends = development.cfg
-        
+        extends = config/development.cfg
+
 
 after that just do::
 
