@@ -5,7 +5,7 @@ python:
 
 install:
     - python bootstrap.py -c config/base.cfg
-    - bin/buildout -c config/base.cfg -q
+    - config/bin/buildout -c config/base.cfg -q
 
 notifications:
     irc:
