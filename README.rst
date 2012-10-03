@@ -1,25 +1,26 @@
 ======
 README
 ======
-
-Todo: change python to python2.7
+**This README is not updated, yet !**
+**Todo: change python to python2.7**
 
 This is a basic buildout for Plone 4.2.x
 
 Installation
 ------------
 
-Tested on Debian 6 [Squeeze], Debian 7.
+Tested on Debian 6 [Squeeze], Debian 7 [Wheezy].
 
 Make sure you have all dependencies you need/want, i prefer to install it into its own virtual environm
 ent::
+**TODO: change to python2.7**
 
         apt-get install build-essential python2.6-dev python-virtualenv
 
 
 go to/create /path/where/you/want/to/install/it for example /home/$USER/plone and create your vritualen
 v::
-
+**TODO: change to python2.7**
         virtualenv --python=python2.6 --no-site-packages $MYPLONESITENAME
 
 after the creation its done do::
