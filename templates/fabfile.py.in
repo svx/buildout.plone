@@ -1,0 +1,78 @@
+import os
+import os.path
+from fabric.api import *
+from fabric.colors import *
+from fabric.contrib import *
+from testing import *
+
+#env.hosts = ['${ips:server}']
+env.roledefs = {
+    'server': ['${ips:server}'],
+    'black': ['${ips:master}']
+}
+
+env.user = '${config:user}'
+
+def infra():
+    create_user()
+    push_key()
+    create_dirs()
+
+def remote_info():
+    run('uname -a')
+
+def create_user():
+    username = '${config:app_user}'
+    sudo('adduser {user} --disabled-password --gecos ""'.format(user=username))
+
+    # add public key for SSH access
+    if not exists('/home/{user}.ssh'.format(user=username)):
+        sudo('mkdir -p /home/{user}/.ssh'.format(user=username))
+        sudo('chmod 700 /home/{user}/.ssh'.format(user=username))
+    else:
+        print 'folder is already there, moving on'
+
+def read_key_file(key_file):
+    key_file = os.path.expanduser(key_file)
+    if not key_file.endswith('pub'):
+        raise RuntimeWarning('Trying to push non-public part of key pair')
+    with open(key_file) as f:
+        return f.read()
+
+def push_key(key_file='~/.ssh/id_rsa.pub'):
+    username = '${config:app_user}'
+    key_text = read_key_file(key_file)
+    with cd('/home/{user}'.format(user=username)):
+        append('.ssh/authorized_keys', key_text, use_sudo=True)
+    sudo('chmod 600 /home/{user}/.ssh/authorized_keys'.format(user=username))
+    sudo('chown -R {user}:{user} /home/{user}/.ssh'.format(user=username))
+
+def create_dirs():
+    env.user = '${config:app_user}'
+    username = '${config:app_user}'
+    projectname = '${config:projectname}'
+
+    if not exists('/home/{user}/scripts'.format(user=username)):
+        run('mkdir /home/{user}/scripts'.format(user=username)) 
+    else:
+        print(green('folder is already there, moving on'))
+    if not exists('/home/{user}/sites'.format(user=username)):
+        run('mkdir -p /home/{user}/sites'.format(user=username))
+    else:
+        print(green('folder is already there, moving on'))
+    #if not exists('/home/{user}/sites/{project}'.format(user=username, project=projectname)):
+    #    run('mkdir -p /home/{user}/sites/{project}'.format(user=username, project=projectname))
+    #else:
+    #    print(green('folder is already there, moving on'))
+    with cd('/home/{user}/scripts'.format(user=username)):
+        run('wget https://raw.github.com/svx/mkenv26/master/mkenv26.sh')
+        run('chmod +x /home/{user}/scripts/mkenv26.sh'.format(user=username))
+
+def create_virtenv():
+    env.user = '${config:app_user}'
+    projectname = '${config:projectname}'
+    username = '${config:app_user}'
+    if not exists('/home/{user}/sites/{project}'.format(user=username, project=projectname)):
+        run('/home/{user}/scripts/mkenv26.sh /home/{user}/sites/{project}'.format(user=username, project=projectname))
+    else:
+        print(green('VirtualEnv is already there, moving on'))
