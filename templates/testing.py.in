@@ -3,12 +3,9 @@ from fabric.contrib.console import *
 from fabric.contrib.files import *
 from fabric.colors import *
 
+
+
 @roles('testserver')
-def U():
-    run('uname -a')
-
-
-@roles('server')
 def run_buildout():
     env.user = '${config:app_user}'
     username = '${config:app_user}'
@@ -19,12 +16,12 @@ def run_buildout():
         run('git clone {git_url} buildout'.format(git_url=git_url))
 #        run('source bin/activate')
 
-@roles('server')
+@roles('testserver')
 def build_testing():
     env.user = '${config:app_user}'
     username = '${config:app_user}'
     projectname = '${config:projectname}'
-     
+
     with cd('/home/{user}/sites/{project}/buildout'.format(user=username, project=projectname)):
         run('source ../bin/activate')
         run('touch buildout.cfg')
@@ -33,25 +30,25 @@ def build_testing():
         run('python bootstrap.py')
         run('./bin/buildout -vvv')
 
-@roles('server')
+@roles('testserver')
 def start_testing():
     env.user = '${config:app_user}'
     username = '${config:app_user}'
     projectname = '${config:projectname}'
 
     with cd('/home/{user}/sites/{project}/buildout'.format(user=username, project=projectname)
-       run('./bin/supervisord') 
+       run('./bin/supervisord')
 
 
-@roles('server')
+@roles('testserver')
 def stop_testing():
     env.user = '${config:app_user}'
     projectname = '${config:projectname}'
-    
+
     with cd('/home/{user}/sites/{project}/buildout'.format(user=username, project=projectname))
         run('./bin/supervisorctl shutdown all')
 
-@roles('server')
+@roles('testserver')
 def update_testing():
     env.user = '${config:app_user}'
     projectname = '${config:projectname}'
