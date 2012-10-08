@@ -3,12 +3,8 @@ from fabric.contrib.console import *
 from fabric.contrib.files import *
 from fabric.colors import *
 
-@roles('testserver')
-def U():
-    run('uname -a')
 
-
-@roles('server')
+@roles('prodserver')
 def run_buildout():
     env.user = '${config:app_user}'
     username = '${config:app_user}'
@@ -19,12 +15,12 @@ def run_buildout():
         run('git clone {git_url} buildout'.format(git_url=git_url))
 #        run('source bin/activate')
 
-@roles('server')
+@roles('prodserver')
 def build_production():
     env.user = '${config:app_user}'
     username = '${config:app_user}'
     projectname = '${config:projectname}'
-     
+
     with cd('/home/{user}/sites/{project}/buildout'.format(user=username, project=projectname)):
         run('source ../bin/activate')
         run('touch buildout.cfg')
@@ -33,25 +29,25 @@ def build_production():
         run('python bootstrap.py')
         run('./bin/buildout -vvv')
 
-@roles('server')
+@roles('prodserver')
 def start_production():
     env.user = '${config:app_user}'
     username = '${config:app_user}'
     projectname = '${config:projectname}'
 
     with cd('/home/{user}/sites/{project}/buildout'.format(user=username, project=projectname)
-       run('./bin/supervisord') 
+       run('./bin/supervisord')
 
 
-@roles('server')
+@roles('prodserver')
 def stop_production():
     env.user = '${config:app_user}'
     projectname = '${config:projectname}'
-    
+
     with cd('/home/{user}/sites/{project}/buildout'.format(user=username, project=projectname))
         run('./bin/supervisorctl shutdown all')
 
-@roles('server')
+@roles('prodserver')
 def update_production():
     env.user = '${config:app_user}'
     projectname = '${config:projectname}'
