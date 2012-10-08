@@ -5,7 +5,6 @@ from fabric.colors import *
 from fabric.contrib import *
 from testing import *
 
-#env.hosts = ['${ips:server}']
 env.roledefs = {
     'server': ['${ips:server}'],
     'black': ['${ips:master}']
@@ -53,7 +52,7 @@ def create_dirs():
     projectname = '${config:projectname}'
 
     if not exists('/home/{user}/scripts'.format(user=username)):
-        run('mkdir /home/{user}/scripts'.format(user=username)) 
+        run('mkdir /home/{user}/scripts'.format(user=username))
     else:
         print(green('folder is already there, moving on'))
     if not exists('/home/{user}/sites'.format(user=username)):
