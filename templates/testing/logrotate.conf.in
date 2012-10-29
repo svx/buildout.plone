@@ -1,0 +1,31 @@
+# This file is generated from templates/logrotate.conf.
+# Please do not edit the copy in etc/
+
+rotate 4
+weekly
+create
+compress
+delaycompress
+
+${buildout:directory}/var/log/supervisord.log{
+    postrotate
+       test ! -f ${buildout:directory}/var/supervisord.pid || kill -USR2 `cat ${buildout:directory}/var/supervisord.pid`
+    endscript
+}
+
+${buildout:directory}/var/log/instance1.log{
+    postrotate
+        test ! -f ${buildout:directory}/var/instance1.log || kill -USR2 `cat ${buildout:directory}/var/instance1.pid`
+    endscript
+}
+
+${buildout:directory}/var/log/instance2.log{
+    postrotate
+        test ! -f ${buildout:directory}/var/instance2.log || kill -USR2 `cat ${buildout:directory}/var/instance2.pid`
+    endscript
+}
+
+${buildout:directory}/var/log/zeo.log{
+        test ! -f ${buildout:directory}/var/zeo.log || kill -USR2 `cat ${buildout:directory}/var/zeo.pid`
+    endscript
+}
