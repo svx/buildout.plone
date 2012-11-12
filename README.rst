@@ -12,7 +12,6 @@ Installation
 Tested on Debian 6 [Squeeze], Debian 7 [Wheezy].
 
 
-.. note:: this needs to be updated to python2.7 !
 
 Make sure you have all dependencies you need/want, i prefer to install it into its own virtual environm
 ent::
