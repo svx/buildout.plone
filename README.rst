@@ -11,16 +11,21 @@ Installation
 
 Tested on Debian 6 [Squeeze], Debian 7 [Wheezy].
 
+
+.. note:: this needs to be updated to python2.7 !
+
 Make sure you have all dependencies you need/want, i prefer to install it into its own virtual environm
 ent::
-**TODO: change to python2.7**
+
+
 
         apt-get install build-essential python2.6-dev python-virtualenv
 
 
 go to/create /path/where/you/want/to/install/it for example /home/$USER/plone and create your vritualen
 v::
-**TODO: change to python2.7**
+
+
         virtualenv --python=python2.6 --no-site-packages $MYPLONESITENAME
 
 after the creation its done do::
