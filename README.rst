@@ -32,7 +32,7 @@ after the creation its done do::
 
 Plone is installed using the buildout system. Installation is as straight forward as possible::
 
-        git clone git://github.com/svx/buildout.plone4,2.git buildout
+        git clone git://github.com/svx/buildout.plone4.2.git buildout
         cd buildout
 
 Now you have to create your buildout.cfg file, depending on what you want to run yo have to do::
