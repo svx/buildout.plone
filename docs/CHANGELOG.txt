@@ -1,7 +1,11 @@
 Changelog
 =========
+03-01-2013 - svx
+    * add superlance to supervisor in config/production.cfg [no config, yet]
+    * add download-cache option to base.cfg
+
 10-12-2012 - svx
-    *update readme
+    * update readme
 
 
 22-05-2012 - svx
