@@ -4,7 +4,7 @@ README
 **This README is not updated, yet !**
 **Todo: change python to python2.7**
 
-This is a basic buildout for Plone 4.2.x
+This is a basic buildout for Plone 
 
 Installation
 ------------

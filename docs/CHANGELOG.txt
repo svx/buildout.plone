@@ -1,5 +1,11 @@
 Changelog
 =========
+07-01-2013 - svx
+    * update datetime to 3.0.2
+    * update plone to 4.3
+    * rename repp to buildout.plone
+    * update readme
+
 03-01-2013 - svx
     * add superlance to supervisor in config/production.cfg [no config, yet]
     * add download-cache option to base.cfg
