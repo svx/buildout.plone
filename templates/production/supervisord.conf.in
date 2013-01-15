@@ -74,6 +74,12 @@ directory = ${buildout:directory}
 stdout_logfile = ${buildout:directory}/var/log/admin-instance-stdout.log
 stderr_logfile = ${buildout:directory}/var/log/admin-instance-stderr.log
 
+eventlisteners =
+    Memmon TICK_60 ${buildout:bin-directory}/memmon [-p instance1=600MB]
+    Memmon TICK_60 ${buildout:bin-directory}/memmon [-p instance2=600MB]
+    Memmon TICK_60 ${buildout:bin-directory}/memmon [-p instance3=600MB]
+    Memmon TICK_60 ${buildout:bin-directory}/memmon [-p instance4=600MB]
+
 [group:instance]
 programs = 1,2,3,4,5
 
