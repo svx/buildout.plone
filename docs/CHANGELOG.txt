@@ -1,5 +1,8 @@
 Changelog
 =========
+14-02-2013 - svx
+    * update for buildout2.0
+
 07-01-2013 - svx
     * update datetime to 3.0.2
     * update plone to 4.3
