@@ -4,7 +4,7 @@ README
 **This README is not updated, yet !**
 **Todo: change python to python2.7**
 
-This is a basic buildout for Plone 
+This is a basic buildout for Plone
 
 Installation
 ------------
@@ -32,7 +32,7 @@ after the creation its done do::
 
 Plone is installed using the buildout system. Installation is as straight forward as possible::
 
-        git clone git://github.com/svx/buildout.plone4.2.git buildout
+        git clone git://github.com/svx/buildout.plone.git buildout
         cd buildout
 
 Now you have to create your buildout.cfg file, depending on what you want to run yo have to do::
